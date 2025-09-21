@@ -1,4 +1,4 @@
-#include "headers/leap.h"
+#include "leap.h"
 
 namespace leap {
 

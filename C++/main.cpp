@@ -1,5 +1,5 @@
-#include "headers/main.h"
-#include "headers/leap.h"
+#include "main.h"
+#include "leap.h"
 
 #include <iostream>
 
