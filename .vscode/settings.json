@@ -1,4 +1,6 @@
 {
+    "cmake.generator": "Ninja",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
     "files.associations": {
         "array": "cpp",
         "atomic": "cpp",
@@ -44,5 +46,6 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/home/rubu/repos/exercism/C++"
 }
