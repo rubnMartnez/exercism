@@ -3,9 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(main)
 
 set(SOURCES main.cpp
-    leap.cpp
-    darts.cpp
-    reverse_string.cpp
+    bob.cpp
 )
 
 add_executable(main ${SOURCES})
