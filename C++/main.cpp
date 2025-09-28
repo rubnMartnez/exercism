@@ -1,14 +1,13 @@
 #include "main.h"
-#include "leap.h"
-#include "darts.h"
+#include "reverse_string.h"
 
 #include <iostream>
 
 int main(){
 
-    auto dart = darts::score(-9, 9);
+    auto value = reverse_string::reverse_string("Hello");
 
-    std::cout << dart << std::endl;
+    std::cout << value << std::endl;
 
     //std::cin.get();
 }

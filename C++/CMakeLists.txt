@@ -5,6 +5,7 @@ project(main)
 set(SOURCES main.cpp
     leap.cpp
     darts.cpp
+    reverse_string.cpp
 )
 
 add_executable(main ${SOURCES})
