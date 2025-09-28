@@ -4,6 +4,7 @@ project(main)
 
 set(SOURCES main.cpp
     leap.cpp
+    darts.cpp
 )
 
 add_executable(main ${SOURCES})
