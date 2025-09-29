@@ -1,16 +1,15 @@
 #include "main.h"
-#include "eliuds_eggs.h"
+#include "allergies.h"
 
 #include <iostream>
 
 int main(){
 
-    auto value = chicken_coop::positions_to_quantity(89);
-    std::cout << value << std::endl;
-    value = chicken_coop::positions_to_quantity(16);
-    std::cout << value << std::endl;
-    value = chicken_coop::positions_to_quantity(2000000000);
-    std::cout << value << std::endl;
+    allergies::allergy_test allergyClass{1};
+    std::cout << allergyClass.is_allergic_to("a") << std::endl;
+
+    // auto value = namespace::positions_to_quantity(89);
+    //std::cout << value << std::endl;
 
     //std::cin.get();
 }
