@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(main)
 
 set(SOURCES main.cpp
-    bob.cpp
+    armstrong_numbers.cpp
 )
 
 add_executable(main ${SOURCES})
