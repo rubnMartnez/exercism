@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(main)
 
 set(SOURCES main.cpp
-    armstrong_numbers.cpp
+    eliuds_eggs.cpp
 )
 
 add_executable(main ${SOURCES})
