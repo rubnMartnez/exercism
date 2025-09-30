@@ -10,7 +10,7 @@ namespace allergies {
 class allergy_test
 {
 private:
-    const int mAllergiesTotal;
+    int mAllergiesTotal;
     std::unordered_set<std::string> mAllergies;
 
     std::unordered_map<int, std::string> mAllergensMapping = {
@@ -24,7 +24,8 @@ private:
         {128, "cats"}
     };
 
-    void checkAllergies();
+    void allergiesRecursiveCheck(unsigned int value);
+    void checkAllergies(unsigned int numAllergies);
 public:
     allergy_test(const int allergiesTotal);
     ~allergy_test();

@@ -8,27 +8,38 @@ namespace allergies {
 allergy_test::allergy_test(const int allergiesTotal) : mAllergiesTotal(allergiesTotal)
 {
     mAllergies.reserve(8);
-    checkAllergies();
+    checkAllergies(allergiesTotal);
 }
 
 allergy_test::~allergy_test()
 {
 }
 
-void allergy_test::checkAllergies(){
-    if (mAllergiesTotal > 255) {
+void allergy_test::allergiesRecursiveCheck(unsigned int value){
+    for (auto it = mAllergensMapping.begin(); it != mAllergensMapping.end(); it++){
+        unsigned int complement = value - it->first;
+        if (mAllergensMapping.find(complement) != mAllergensMapping.end()){
+            mAllergies.emplace((*it).second);
+            mAllergies.emplace(mAllergensMapping[complement]);
+            
+        }
+    }
+}
+
+void allergy_test::checkAllergies(unsigned int numAllergies){
+    if (numAllergies > 255) {
         mAllergies.emplace("eggs");
         return;
     }
 
-    if (mAllergiesTotal == 255){
+    if (numAllergies == 255){
         for (auto it : mAllergensMapping){
             mAllergies.emplace(mAllergensMapping[it.first]);
         }
         return;
     }
 
-    switch (mAllergiesTotal)
+    switch (numAllergies)
     {
         case 1:
         case 2:
@@ -44,14 +55,21 @@ void allergy_test::checkAllergies(){
             break;
     }
 
-    for (auto it : mAllergensMapping){
-        auto complement = it.first - mAllergiesTotal;
+    unsigned int complement = 0;
 
-        complement = std::abs(complement); // TODO check this logic
-
+    for (auto it = mAllergensMapping.begin(); it != mAllergensMapping.end(); it++){
+        complement = numAllergies - it->first;
+        // if (complement == 0){
+        //     mAllergies.emplace(mAllergensMapping[complement]);
+        //     return;
+        // } 
         if (mAllergensMapping.find(complement) != mAllergensMapping.end()){
-            mAllergies.emplace(it.second);
+            mAllergies.emplace((*it).second);
             mAllergies.emplace(mAllergensMapping[complement]);
+            numAllergies -= complement;
+            return;
+        } else {
+            checkAllergies(complement);
         }
     }
 }
