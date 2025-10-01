@@ -5,7 +5,7 @@
 
 int main(){
 
-    allergies::allergy_test allergyClass{248};
+    allergies::allergy_test allergyClass{509};
     std::cout << allergyClass.is_allergic_to("strawberries") << std::endl;
     for (auto a : allergyClass.get_allergies()) // expected output = "strawberries", "tomatoes","chocolate", "pollen", "cats"
         std::cout << a << std::endl;

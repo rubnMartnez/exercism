@@ -9,27 +9,22 @@ namespace allergies {
 allergy_test::allergy_test(const int allergiesTotal) : mAllergiesTotal(allergiesTotal)
 {
     mAllergies.reserve(8);
-    checkAllergies(allergiesTotal);
+    checkAllergies();
 }
 
 allergy_test::~allergy_test()
 {
 }
 
-void allergy_test::checkAllergies(unsigned int numAllergies){
-    if (numAllergies > 255) {
-        mAllergies.emplace("eggs");
-        return;
-    }
-
-    if (numAllergies == 255){
+void allergy_test::checkAllergies(){
+    if (mAllergiesTotal == 255){
         for (auto it : mAllergensMapping){
             mAllergies.emplace(mAllergensMapping[it.first]);
         }
         return;
     }
 
-    switch (numAllergies)
+    switch (mAllergiesTotal)
     {
         case 1:
         case 2:
@@ -45,10 +40,12 @@ void allergy_test::checkAllergies(unsigned int numAllergies){
             break;
     }
 
+    int filteredAllergies = mAllergiesTotal > 255 ? mAllergiesTotal % 256 : mAllergiesTotal;
+
     std::vector<int> binNums;
     binNums.reserve(8);
-    int quotient = mAllergiesTotal / 2;
-    int reminder = mAllergiesTotal % 2;
+    int quotient = filteredAllergies / 2;
+    int reminder = filteredAllergies % 2;
     binNums.push_back(reminder);
 
     while (quotient > 0)

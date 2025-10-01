@@ -35,7 +35,7 @@ private:
         {7, 128}
     };
 
-    void checkAllergies(unsigned int numAllergies);
+    void checkAllergies();
 public:
     allergy_test(const int allergiesTotal);
     ~allergy_test();
