@@ -36,6 +36,7 @@ private:
     };
 
     void checkAllergies();
+    void checkAllergiesBitwise();
 public:
     allergy_test(const int allergiesTotal);
     ~allergy_test();

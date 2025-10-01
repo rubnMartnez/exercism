@@ -9,7 +9,8 @@ namespace allergies {
 allergy_test::allergy_test(const int allergiesTotal) : mAllergiesTotal(allergiesTotal)
 {
     mAllergies.reserve(8);
-    checkAllergies();
+    //checkAllergies();
+    checkAllergiesBitwise();
 }
 
 allergy_test::~allergy_test()
@@ -60,6 +61,17 @@ void allergy_test::checkAllergies(){
         }
     }
 }
+
+void allergy_test::checkAllergiesBitwise() {
+    unsigned int numAllergies = mAllergiesTotal & 255; // only care about the lowest 8 bits
+    
+    for (auto const& [index, name] : mAllergensMapping) {
+        if (numAllergies & index) {
+            mAllergies.emplace(name);
+        }
+    }
+}
+
 
 bool allergy_test::is_allergic_to(const std::string& allergy){
     auto resIt = mAllergies.find(allergy);
