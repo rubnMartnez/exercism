@@ -24,7 +24,17 @@ private:
         {128, "cats"}
     };
 
-    void allergiesRecursiveCheck(unsigned int value);
+    std::unordered_map<int, int> mMappingIndexToAllergen = {
+        {0, 1},
+        {1, 2},
+        {2, 4},
+        {3, 8},
+        {4, 16},
+        {5, 32},
+        {6, 64},
+        {7, 128}
+    };
+
     void checkAllergies(unsigned int numAllergies);
 public:
     allergy_test(const int allergiesTotal);

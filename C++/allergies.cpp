@@ -1,6 +1,7 @@
 #include "allergies.h"
 
 #include <cmath>
+#include <vector>
 
 namespace allergies {
 
@@ -13,17 +14,6 @@ allergy_test::allergy_test(const int allergiesTotal) : mAllergiesTotal(allergies
 
 allergy_test::~allergy_test()
 {
-}
-
-void allergy_test::allergiesRecursiveCheck(unsigned int value){
-    for (auto it = mAllergensMapping.begin(); it != mAllergensMapping.end(); it++){
-        unsigned int complement = value - it->first;
-        if (mAllergensMapping.find(complement) != mAllergensMapping.end()){
-            mAllergies.emplace((*it).second);
-            mAllergies.emplace(mAllergensMapping[complement]);
-            
-        }
-    }
 }
 
 void allergy_test::checkAllergies(unsigned int numAllergies){
@@ -55,21 +45,21 @@ void allergy_test::checkAllergies(unsigned int numAllergies){
             break;
     }
 
-    unsigned int complement = 0;
+    std::vector<int> binNums;
+    binNums.reserve(8);
+    int quotient = mAllergiesTotal / 2;
+    int reminder = mAllergiesTotal % 2;
+    binNums.push_back(reminder);
 
-    for (auto it = mAllergensMapping.begin(); it != mAllergensMapping.end(); it++){
-        complement = numAllergies - it->first;
-        // if (complement == 0){
-        //     mAllergies.emplace(mAllergensMapping[complement]);
-        //     return;
-        // } 
-        if (mAllergensMapping.find(complement) != mAllergensMapping.end()){
-            mAllergies.emplace((*it).second);
-            mAllergies.emplace(mAllergensMapping[complement]);
-            numAllergies -= complement;
-            return;
-        } else {
-            checkAllergies(complement);
+    while (quotient > 0)
+    {
+        reminder = quotient % 2;
+        quotient /= 2;
+        binNums.push_back(reminder);
+    }
+    for (int i = binNums.size() - 1; i >= 0; i--){
+        if (binNums[i]){
+            mAllergies.emplace(mAllergensMapping[mMappingIndexToAllergen[i]]);
         }
     }
 }
