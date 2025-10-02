@@ -2,6 +2,7 @@
 #include "allergies.h"
 
 #include <iostream>
+#include <cstdint>
 
 int main(){
 
