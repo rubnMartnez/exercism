@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(main)
 
 set(SOURCES main.cpp
-    allergies.cpp
+    difference_of_squares.cpp
 )
 
 add_executable(main ${SOURCES})
