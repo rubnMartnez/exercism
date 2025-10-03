@@ -18,20 +18,38 @@ namespace star_map {
 
 enum class System{
     BetaHydri,
+    Sol,
+    EpsilonEridani,
+    AlphaCentauri,
+    DeltaEridani,
+    Omicron2Eridani
 };
 
 } // namespace star_map
 
 namespace heaven {
 
-    class Vessel
-    {
+    
+class Vessel
+{
     private:
-        /* data */
+    
     public:
-        Vessel(const std::string& name, int num);
-        Vessel(const std::string& name, int num, star_map::System sys);
-        ~Vessel();
-    };
+    std::string mName;
+    int generation;
+    star_map::System current_system{};
+    int busters{};
+    
+    Vessel(const std::string& name, int gen);
+    Vessel(const std::string& name, int gen, star_map::System sys);
+    ~Vessel();
+    
+    Vessel replicate(std::string name);
+    bool shoot_buster();
+    void make_buster();
+};
+    
+bool in_the_same_system(Vessel firstVess, Vessel secondVess);
+std::string get_older_bob(Vessel firstVess, Vessel secondVess);
 
-} // namespace heavena
+} // namespace heaven

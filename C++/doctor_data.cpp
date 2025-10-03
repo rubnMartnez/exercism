@@ -7,22 +7,52 @@ hp2,öjmpö.
 
 */
 
-#include "doctor_data.hpp"
+#include "doctor_data.h"
 
 
 namespace heaven {
 
-Vessel::Vessel(const std::string& name, int num)
+Vessel::Vessel(const std::string& name, int gen)
 {
-
+    mName = name;
+    generation = gen;
+    current_system = star_map::System::Sol;
 }
-Vessel::Vessel(const std::string& name, int num, star_map::System sys)
+Vessel::Vessel(const std::string& name, int gen, star_map::System sys)
 {
-
+    mName = name;
+    generation = gen;
+    current_system = sys;
 }
 
 Vessel::~Vessel()
 {
+}
+
+Vessel Vessel::replicate(std::string name){
+    return {name, generation + 1, current_system};
+}
+
+bool Vessel::shoot_buster(){
+    if (busters){
+        busters--;
+        return true;
+    }
+    return busters;
+}
+
+void Vessel::make_buster(){
+    busters++;
+}
+
+bool in_the_same_system(Vessel firstVess, Vessel secondVess){
+    return firstVess.current_system == secondVess.current_system;
+}
+
+std::string get_older_bob(Vessel firstVess, Vessel secondVess){
+    if (firstVess.generation < secondVess.generation)
+        return firstVess.mName;
+    return secondVess.mName;
 }
 
 } // namespace heavena
