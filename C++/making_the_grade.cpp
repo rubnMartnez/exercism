@@ -35,7 +35,11 @@ std::array<int, 4> letter_grades(int highest_score) {
 std::vector<std::string> student_ranking(
     std::vector<int> student_scores, std::vector<std::string> student_names) {
     // TODO: Implement student_ranking
-    return {};
+    std::vector<std::string> resMapping;
+    for (int i = 0; i < student_names.size(); i++){
+        resMapping.emplace_back(std::to_string(i+1) + ". " + student_names[i] + ": " + std::to_string(student_scores[i]));
+    }
+    return resMapping;
 }
 
 // Create a string that contains the name of the first student to make a perfect
@@ -43,6 +47,8 @@ std::vector<std::string> student_ranking(
 std::string perfect_score(std::vector<int> student_scores,
                           std::vector<std::string> student_names) {
     // TODO: Implement perfect_score
+    for (int i = 0; i < student_names.size(); i++)
+        if (student_scores[i] == 100) return student_names[i];
     return "";
 }
 
@@ -52,8 +58,10 @@ std::string perfect_score(std::vector<int> student_scores,
 int main(){
     // round_down_scores({90.33, 40.5, 55.44, 70.05, 30.55, 25.45, 80.45, 95.3, 38.7, 40.3});
     // std::cout << count_failed_students({90,40,55,70,30,25,80,95,38,40}) << std::endl;
+    std::vector<int> student_scores {100, 99, 90, 84, 66, 53, 47};
+    std::vector<std::string> student_names {"Joci", "Sara","Kora","Jan","Indra","Bern", "Fred"};
     for (int i = 0; i < 4; i++)
-        std::cout << letter_grades(90)[i] << std::endl;
+        std::cout << student_ranking(student_scores, student_names)[i] << std::endl;
 
 }
     
