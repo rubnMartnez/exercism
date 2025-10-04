@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(main)
 
 set(SOURCES main.cpp
-    kindergarten_garden.cpp
+    hexadecimal.cpp
 )
 
 add_executable(main ${SOURCES})
