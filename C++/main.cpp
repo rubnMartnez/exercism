@@ -1,14 +1,9 @@
 #include "main.h"
-#include "atbash_cipher.h"
-
-#include <iostream>
-#include <cstdint>
+#include "luhn.h"
 
 int main(){
-    auto a = atbash_cipher::encode("yes");
-    std::cout << a << std::endl; // expected output bvh
-    a = atbash_cipher::encode("O M G");
-    std::cout << a << std::endl; // expected output lnt
+    auto a = luhn::valid(" 0");
+    std::cout << a << std::endl; // true
 
     //std::cin.get();
 }

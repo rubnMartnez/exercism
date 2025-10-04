@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(main)
 
 set(SOURCES main.cpp
-    atbash_cipher.cpp
+    luhn.cpp
 )
 
 add_executable(main ${SOURCES})
