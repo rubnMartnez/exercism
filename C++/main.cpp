@@ -1,9 +1,10 @@
 #include "main.h"
-#include "luhn.h"
+#include "kindergarten_garden.h"
 
 int main(){
-    auto a = luhn::valid(" 0");
-    std::cout << a << std::endl; // true
+    auto arr = kindergarten_garden::plants("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV", "Alice");
+    for (auto a : arr)
+        std::cout << a << std::endl; // true
 
     //std::cin.get();
 }
