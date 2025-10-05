@@ -1,9 +1,10 @@
 #include "main.h"
-#include "rotational_cipher.h"
+#include "protein_translation.h"
 
 int main(){
-    auto a = rotational_cipher::rotate("a", 26);
-    std::cout << a << std::endl;
+    auto a = protein_translation::proteins("AUGUUUUGG");
+    for (int i = 0; i < a.size(); i++)
+        std::cout << a[i] << std::endl; // "Methionine", "Phenylalanine", "Tryptophan"
 
     //std::cin.get();
 }
