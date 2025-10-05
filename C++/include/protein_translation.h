@@ -6,7 +6,7 @@
 namespace protein_translation {
 
 // TODO: add your solution here
-std::multimap<std::string, std::string> codonToAC{
+inline std::map<std::string, std::string> codonToAC{
     {"AUG", "Methionine"},
     {"UUU", "Phenylalanine"},
     {"UUC", "Phenylalanine"},
