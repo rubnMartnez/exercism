@@ -1,27 +1,34 @@
 #include "sieve.h"
+#include <vector>
 
 namespace sieve {
 
-// TODO: add your solution here
-std::vector<int> primes(int value){
-    std::vector<int> resVec;
-    resVec.reserve(value);
-    for (int i = 2; i<=value; i++){
-        bool isPrime = true;
-        for (int j = 2; j < i; j++){
-            if(isPrime){
-                for (int k = 2; k < i; k++){
-                    if (j * k == i){
-                        isPrime = false;
-                        break;
-                    }
-                }
+std::vector<int> primes(int value) {
+    if (value < 2)
+        return {};
+
+    std::vector<bool> is_prime(value + 1, true);
+    is_prime[0] = false;
+    is_prime[1] = false;
+
+    for (int i = 2; i * i <= value; ++i) {
+        if (is_prime[i]) {
+            // Mark multiples of i as not prime
+            for (int j = i * i; j <= value; j += i) {
+                is_prime[j] = false;
             }
         }
-        if (isPrime) resVec.emplace_back(i);
     }
-    return resVec;
+
+    // Collect primes
+    std::vector<int> result;
+    result.reserve(value / 2); // small optimization
+    for (int i = 2; i <= value; ++i) {
+        if (is_prime[i])
+            result.emplace_back(i);
+    }
+
+    return result;
 }
 
 }  // namespace sieve
-
