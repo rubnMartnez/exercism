@@ -3,7 +3,7 @@
 
 int main()
 {
-    auto a = prime_factors::of(12);
+    auto a = prime_factors::of(93819012551);
 
     for (int i = 0; i < a.size(); i++)
         std::cout << a[i] << std::endl;

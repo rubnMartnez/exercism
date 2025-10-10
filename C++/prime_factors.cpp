@@ -4,32 +4,25 @@
 
 namespace prime_factors
 {
-
-    std::vector<uint8_t> mainPrimes{2,3,5,7,11,13,17,19};
-
     // TODO: add your solution here
     std::vector<long long> of(long int n)
     {
         if (n == 1) return {};
         std::vector<long long> resVec{};
-        long int quotient{n};
-        uint64_t reminder{};
 
-        while (quotient > 1)
+        long int quotient{ n };
+
+        while (quotient % 2 == 0)
         {
-            bool primeAdded = false;
-            for (uint8_t mainPrim : mainPrimes){
-                reminder = quotient % mainPrim;
-                if (reminder) continue;
+            quotient /= 2;
+            resVec.emplace_back(2);
+        }
 
-                quotient /= mainPrim;
-                resVec.emplace_back(mainPrim);
-                primeAdded = true;
-                break;
-            }
-            if (!primeAdded){
-               resVec.emplace_back(quotient);
-               break;
+        for (int i = 3; i <= quotient; i += 2) {
+            while (quotient % i == 0)
+            {
+                quotient /= i;
+                resVec.emplace_back(i);
             }
         }
 
