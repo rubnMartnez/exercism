@@ -21,15 +21,20 @@ int uv_light_heuristic(std::vector<int>* data_array) {
 bool connection_check(const pillar_men_sensor* sensor){
     return sensor != nullptr;
 }
-int activity_counter(pillar_men_sensor sensor_array[], int capacity){
-    if (sensor_array) return capacity;
-    return 0;
+int activity_counter(pillar_men_sensor* sensor_array, int capacity){
+    int total{0};
+    for (int i = 0; i < capacity; i++){
+        total += (sensor_array+i)->activity;
+    }
+    return total;
 }
 bool alarm_control(const pillar_men_sensor* sensor){
-    return sensor != nullptr;
+    if (sensor == nullptr) return false;
+    return sensor->activity;
 }
-bool uv_alarm(const pillar_men_sensor* sensor){
-    return sensor != nullptr;
+bool uv_alarm(pillar_men_sensor* sensor){
+    if (sensor == nullptr) return false;
+    return sensor->activity < uv_light_heuristic(&sensor->data);
 }
 
 }  // namespace speedywagon
