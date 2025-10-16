@@ -38,37 +38,28 @@ namespace simple_linked_list {
         // TODO: Implement a function to reverse the order of the elements in the
         // list.
 
-        Element* currentElem = head;
-        Element* oldElem = currentElem;
+        Element* prev = nullptr;
+        Element* current = head;
 
-        while (currentElem) {
-            auto tmpNext = currentElem->next;
-            currentElem->next = oldElem;
-            if (tmpNext) {
-                oldElem = currentElem;
-                currentElem = tmpNext;
-            }
-            else {
-                head = currentElem;
-                break;
-            }
+        while (current) {
+            Element* next = current->next;  // store next node
+            current->next = prev;           // reverse pointer
+            prev = current;                 // move prev forward
+            current = next;                 // move current forward
         }
+
+        head = prev; // new head is the last non-null node
     }
 
     List::~List() {
         // TODO: Ensure that all resources are freed on destruction
-        // if (!head) return;
-        // Element* elemPtr{head->next};
-        // while (elemPtr->next)
-        // {
-        //     Element* elemToDelete{elemPtr};
-        //     elemPtr = elemPtr->next;
-        //     delete elemToDelete;
-        // }
-        // delete elemPtr;
-        // delete head;
-        // elemPtr = nullptr;
-        // head = nullptr;
+        Element* currentElem = head;
+        while (currentElem)
+        {
+            auto elemToDelete = currentElem;
+            currentElem = currentElem->next;
+            delete elemToDelete;
+        }
     }
 
 }  // namespace simple_linked_list
