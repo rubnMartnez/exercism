@@ -13,8 +13,7 @@ int main()
         list.reverse();
 
         for (int i = 0; i < 5; i++) {
-            auto a = list.pop();
-            std::cout << a << std::endl;
+            std::cout << list.pop() << std::endl;
         }
     }
 
