@@ -10,10 +10,11 @@ int main()
             list.push(i);
         }
 
-        //list.reverse();
+        list.reverse();
 
         for (int i = 0; i < 5; i++) {
-            std::cout << list.pop() << std::endl;
+            auto a = list.pop();
+            std::cout << a << std::endl;
         }
     }
 
