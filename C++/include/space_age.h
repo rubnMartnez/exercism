@@ -10,6 +10,8 @@ class space_age
 {
 private:
     uint64_t mAgeInSeconds{};
+    double mAgeInEarthYears{};
+    const double mEARTH_YEAR_IN_SECONDS{31'557'600};
 public:
     explicit space_age(uint64_t age_in_seconds);
     ~space_age();
