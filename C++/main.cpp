@@ -1,5 +1,5 @@
 #include "main.h"
-#include "grains.h"
+#include "pangram.h"
 
 int main()
 {
@@ -22,9 +22,7 @@ int main()
 
     // const std::vector<double> input{0.5, 250, 150, 3, 0.5};
     // int portions{6};
-    auto a = grains::square(62);
-    std::cout << a << std::endl;
-    a = grains::total();
+    auto a = pangram::is_pangram(".The quick brown fox jumps over the lazy dog.");
     std::cout << a << std::endl;
 
     // if (a.has_value()){
