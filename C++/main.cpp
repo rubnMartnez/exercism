@@ -1,5 +1,5 @@
 #include "main.h"
-#include "alphametics.h"
+#include "grains.h"
 
 int main()
 {
@@ -22,15 +22,17 @@ int main()
 
     // const std::vector<double> input{0.5, 250, 150, 3, 0.5};
     // int portions{6};
-    auto a = alphametics::solve("ACA + DD == BD");
-    if (a.has_value()){
-        if (a.value().empty())
-            std::cout << "empty\n";
-        else
-            std::cout << a.value() << std::endl;
-    }
-    else
-        std::cout << "not valid\n";
+    auto a = grains::square(64);
+    std::cout << a << std::endl;
+
+    // if (a.has_value()){
+    //     if (a.value().empty())
+    //         std::cout << "empty\n";
+    //     else
+    //         std::cout << a.value() << std::endl;
+    // }
+    // else
+    //     std::cout << "not valid\n";
 
     // for (int i = 0; i < a.size(); i++)
     //     std::cout << a[i] << std::endl;
