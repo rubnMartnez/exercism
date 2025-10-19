@@ -22,7 +22,9 @@ int main()
 
     // const std::vector<double> input{0.5, 250, 150, 3, 0.5};
     // int portions{6};
-    auto a = grains::square(64);
+    auto a = grains::square(62);
+    std::cout << a << std::endl;
+    a = grains::total();
     std::cout << a << std::endl;
 
     // if (a.has_value()){
