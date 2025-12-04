@@ -2,3 +2,5 @@ build
 .vscode
 C++/main
 .editorconfig
+target
+Cargo.lock
